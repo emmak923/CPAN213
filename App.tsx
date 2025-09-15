@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -7,8 +7,18 @@ import {
   Text,
   View,
   Image,
+  Button,
 } from 'react-native';
 function App() {
+  const [displayText, setDisplayText] = useState('');
+
+  const handlePress = () => {
+    if (displayText == '') {
+      setDisplayText('I will be familiar with React Native!');
+    } else {
+      setDisplayText('');
+    }
+  };
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" />
@@ -26,6 +36,15 @@ function App() {
           <Text style={styles.goal}>• Build cross-platform mobile apps</Text>
           <Text style={styles.goal}>• Master state management with Redux</Text>
           <Text style={styles.goal}>• Deploy apps to app stores</Text>
+          <View style={{ marginTop: 10 }}>
+            <Button
+              title={displayText == '' ? 'Show message' : 'Hide message'}
+              onPress={handlePress}
+            />
+          </View>
+          {displayText !== '' && (
+            <Text style={styles.dynamicText}>{displayText}</Text>
+          )}
         </View>
       </View>
     </SafeAreaView>
@@ -91,6 +110,13 @@ const styles = StyleSheet.create({
     color: '#34495e',
     marginBottom: 5,
     lineHeight: 22,
+  },
+  dynamicText: {
+    marginTop: 10,
+    fontSize: 16,
+    color: '#16a085',
+    fontWeight: '600',
+    textAlign: 'center',
   },
 });
 export default App;
