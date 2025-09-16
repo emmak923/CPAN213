@@ -9,6 +9,10 @@ import {
   Image,
   Button,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+
+// const profile = require('./assets/profile.JPG');
+
 function App() {
   const [displayText, setDisplayText] = useState('');
 
@@ -22,29 +26,38 @@ function App() {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" />
-      <View style={styles.header}>
+      {/* added gradient backgrounds using third-party libraries */}
+      <LinearGradient colors={['#34dbb4ff', '#2ecc71']} style={styles.header}>
         <Text style={styles.title}>Welcome to CPAN 213</Text>
         <Text style={styles.subtitle}>Cross-Platform Mobile Development</Text>
-      </View>
+      </LinearGradient>
       <View style={styles.content}>
         <Text style={styles.greeting}>Hello, I'm Ema!</Text>
         <Text style={styles.info}>Student ID: N01678730</Text>
         <Text style={styles.info}>Program: Computer Programming</Text>
-        <View style={styles.goals}>
-          <Text style={styles.sectionTitle}>My Course Goals:</Text>
-          <Text style={styles.goal}>• Learn React Native fundamentals</Text>
-          <Text style={styles.goal}>• Build cross-platform mobile apps</Text>
-          <Text style={styles.goal}>• Master state management with Redux</Text>
-          <Text style={styles.goal}>• Deploy apps to app stores</Text>
-          <View style={{ marginTop: 10 }}>
-            <Button
-              title={displayText == '' ? 'Show message' : 'Hide message'}
-              onPress={handlePress}
-            />
+        <View style={styles.goalsContainer}>
+          <View style={styles.goals}>
+            <Text style={styles.sectionTitle}>My Course Goals:</Text>
+            <Text style={styles.goal}>• Learn React Native fundamentals</Text>
+            <Text style={styles.goal}>• Build cross-platform mobile apps</Text>
+            <Text style={styles.goal}>
+              • Master state management with Redux
+            </Text>
+            <Text style={styles.goal}>• Deploy apps to app stores</Text>
+            <View style={styles.buttonContainer}>
+              {/* added a Button component that changes text when a local image*/}
+              <Button
+                title={displayText ? 'Hide message' : 'Show message'}
+                onPress={handlePress}
+              />
+            </View>
+            {displayText !== '' && (
+              <Text style={styles.dynamicText}>{displayText}</Text>
+            )}
           </View>
-          {displayText !== '' && (
-            <Text style={styles.dynamicText}>{displayText}</Text>
-          )}
+          {/* <View style={styles.imageContainer}>
+          <Image source={profile} style={styles.image} />
+        </View> */}
         </View>
       </View>
     </SafeAreaView>
@@ -88,6 +101,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 5,
   },
+  goalsContainer: {
+    // flexbox layouts
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   goals: {
     marginTop: 30,
     padding: 15,
@@ -118,5 +137,19 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     textAlign: 'center',
   },
+  buttonContainer: {
+    marginTop: 10,
+    width: '60%',
+    alignSelf: 'center',
+  },
+  // imageContainer: {
+  //   marginTop: 40,
+  //   alignItems: 'center',
+  // },
+  // image: {
+  //   width: 300,
+  //   height: 200,
+  //   borderRadius: 10,
+  // },
 });
 export default App;
