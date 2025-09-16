@@ -13,7 +13,9 @@ Please ensure the following tools are installed on your machine:
 
 ## Development Environment Setup
 
-### 1. Install Node.js
+### 1. Install Node.js (5 minutes)
+
+#### 1-1 Download Node.js
 
 Download and install from the official website:  
 https://nodejs.org/
@@ -28,19 +30,33 @@ brew install node
 sudo apt install nodejs npm
 ```
 
-### 2. Verify Installation:
+#### 1-2. Verify Installation
 
 Run these commands to check that Node.js and npm are installed:
+
+- Node.js should be v18.0.0 or higher
+- npm should be v8.0.0 or higher
 
 ```bash
 node -v
 npm -v
 ```
 
-### 3. Install Android Studio
+### 2. Install React Native CLI (3 minutes)
+
+```bash
+npm install -g react-native-cli
+npm install -g @react-native-community/cli
+```
+
+### 3. Install Android Studio (10 minutes)
+
+#### 3-1. Install Android Studio
 
 Download and install from: https://developer.android.com/studio
 Install with default settings
+
+#### 3-2. Set Environment Variables Windows:
 
 Set up environment variables:
 
@@ -59,29 +75,35 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 ### 4. iOS Development Setup (macOS Only)
 
-Install Xcode
+#### 4-1 Install Xcode
+
 Download from Mac App Store
 Install Xcode Command Line Tools:
 
 ```bash
 xcode-select --install
+```
 
-Install CocoaPods
+#### 4-2. Install CocoaPods
+
+```bash
 sudo gem install cocoapods
 ```
 
-### 5. Install Code Editor - Visual Studio Code
+#### 4-5. Install Code Editor - Visual Studio Code
 
 Download from: https://code.visualstudio.com/
 
-### 6. Create a test project to verify setup:
+### 5. Environment Verification (20 minutes)
+
+#### 5-1. Create a test project to verify setup:
 
 ```bash
 npx react-native init EnvironmentTest
 cd EnvironmentTest
 ```
 
-### 7. Run the project
+#### 5-2. Run the project
 
 ```bash
 # Android
@@ -89,4 +111,10 @@ npx react-native run-android
 
 # For iOS (macOS only)
 npx react-native run-ios
+```
+
+- When you use this command to open your project and error messages are on your screen, try this command and create new project:
+
+```bash
+npx @react-native-community/cli@latest init NewProjectName
 ```
